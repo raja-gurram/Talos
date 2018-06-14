@@ -30,6 +30,7 @@ namespace Helpdesk.Driver
 
         internal LoginPage LoginPage => new LoginPage(driver);
         internal AddUserPage AddUserPage => new AddUserPage(driver);
+        internal AddCategoryPage AddCategoryPage => new AddCategoryPage(driver);
 
         #endregion
     }

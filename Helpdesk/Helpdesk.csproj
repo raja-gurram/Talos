@@ -72,6 +72,11 @@
     <Compile Include="Driver\BaseClass.cs" />
     <Compile Include="Driver\Hooks.cs" />
     <Compile Include="Enums\UrlEnums.cs" />
+    <Compile Include="Features\AddCategory.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddCategory.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\AddUsers.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,14 +87,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\NewTickets.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewTickets.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddCategoryPage.cs" />
     <Compile Include="Pages\AddUserPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="StepDefs\AddCategory.cs" />
     <Compile Include="StepDefs\AddUsers.cs" />
     <Compile Include="StepDefs\LoginSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\AddCategory.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddCategory.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\AddUsers.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddUsers.feature.cs</LastGenOutput>
@@ -97,6 +113,10 @@
     <None Include="Features\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Login.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\NewTickets.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>NewTickets.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

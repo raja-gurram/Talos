@@ -65,13 +65,13 @@ namespace Helpdesk.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create New Caregory")]
+        [NUnit.Framework.DescriptionAttribute("Create New Category")]
         [NUnit.Framework.CategoryAttribute("Add")]
         [NUnit.Framework.CategoryAttribute("Ticket")]
         [NUnit.Framework.CategoryAttribute("Categories")]
-        public virtual void CreateNewCaregory()
+        public virtual void CreateNewCategory()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New Caregory", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New Category", new string[] {
                         "Add",
                         "Ticket",
                         "Categories"});
@@ -88,20 +88,15 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
  testRunner.When("I Click the Add Category button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 13
- testRunner.Then("I should see the Create form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the Create New Category form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Category name",
                         "Section"});
-            table1.AddRow(new string[] {
-                        "Test",
-                        "Testuser_"});
 #line 14
- testRunner.When("I enter the details", ((string)(null)), table1, "When ");
-#line 17
- testRunner.And("Click on add new Category button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 18
- testRunner.Then("the new category should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I enter the Category Details", ((string)(null)), table1, "When ");
+#line 16
+ testRunner.Then("Click on add new Category button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

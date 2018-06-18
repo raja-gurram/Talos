@@ -19,6 +19,10 @@ namespace Helpdesk.Pages
             PageFactory.InitElements(driver, this);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
+        public void VerifyHelpdeskPage()
+        {
+            Assert.IsTrue(driver.Title.Contains("Helpdesk"));
+        }
 
         [FindsBy(How = How.XPath, Using = "//*[@id='divBigHeader']/ul[1]/li[5]/a")]
         public IWebElement AdministrationTab { get; set; }
@@ -43,17 +47,76 @@ namespace Helpdesk.Pages
             TicketCategories.Click();
   
         }
-        [Then(@"I should see Add Category button present")]
-        public void ThenIShouldSeeAddCategoryButtonPresent()
+        public Func<IWebDriver, bool> IsElementPresent(IWebElement element)
         {
-            ScenarioContext.Current.Pending();
-        }
-        [When(@"I Click the Add Category button")]
-        public void WhenIClickTheAddCategoryButton()
-        {
-            ScenarioContext.Current.Pending();
+            return driver =>
+            {
+                try
+                {
+                    return element.Displayed;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return false;
+                }
+            };
         }
 
+        public void WaitForElement(IWebElement ele)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait.Until(IsElementPresent(ele));
+        }
+
+        public void VerifyAddNewCategoryButton()
+        {
+            WaitForElement(AddNewCategoryButton);
+            Assert.IsTrue(AddNewCategoryButton.Displayed);
+        }
+
+        public void ClickOnAddNewCategory()
+        {
+            AddNewCategoryButton.Click();
+        }
+        public void VerifyCreateNewCategoryForm()
+        {
+            Assert.IsTrue(CategoryName.Displayed);
+        }
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyz";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public void EnterDetails(Table table)
+        {
+            var CategoryName = table.Rows[0][0];
+           //CategoryName.SendKeys(CategoryName + RandomString(4) );
+           
+
+        }
+
+        public void EnterDetails()
+        {
+            CategoryName.SendKeys("NEW Category" + RandomString(20));
+            var Section = driver.FindElement(By.Name("Section"));
+            //create select element object 
+            var selectElement = new SelectElement(Section);
+
+            //select by value
+            selectElement.SelectByValue("Sales");
+            // select by text
+            selectElement.SelectByText("Technical");
+        }
+
+        public void ClickOnCreateCategoryButton()
+        {
+           AddNewCategory.Click();
+        }
+
+      
 
     }
 }

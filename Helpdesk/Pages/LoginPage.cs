@@ -12,7 +12,9 @@ namespace Helpdesk.Pages
         public LoginPage(IWebDriver driver)
         {
             this.driver = driver;
+#pragma warning disable CS0618 // Type or member is obsolete
             PageFactory.InitElements(driver, this);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         private String baseUrl = "https://raja.jitbit.com/helpdesk/User/Login/";
